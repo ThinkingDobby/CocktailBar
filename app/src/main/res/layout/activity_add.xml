@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/add_tb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Drink"
+            android:textSize="22sp"
+            android:textColor="@android:color/black"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/add_iv_drink"
+        android:layout_width="225dp"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toTopOf="@+id/add_tv_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_tb"
+        app:srcCompat="@drawable/ic_launcher_foreground"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/add_tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/add_et_name"
+        app:layout_constraintStart_toStartOf="@+id/add_et_explain" />
+
+    <EditText
+        android:id="@+id/add_et_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Cosmopolitan"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/add_tv_ingredient"
+        app:layout_constraintStart_toStartOf="@+id/add_et_explain" />
+
+    <TextView
+        android:id="@+id/add_tv_ingredient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingredient"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/add_et_ingredient"
+        app:layout_constraintStart_toStartOf="@+id/add_et_explain" />
+
+    <EditText
+        android:id="@+id/add_et_ingredient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Vodka, Triple Sec"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/add_tv_tasteType"
+        app:layout_constraintStart_toStartOf="@+id/add_et_explain" />
+
+    <TextView
+        android:id="@+id/add_tv_tasteType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="맛 종류"
+        app:layout_constraintBottom_toTopOf="@+id/add_sp_tasteType"
+        app:layout_constraintStart_toStartOf="@+id/add_et_explain" />
+
+    <Spinner
+        android:id="@+id/add_sp_tasteType"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/add_et_explain"
+        app:layout_constraintStart_toStartOf="@+id/add_et_explain" />
+
+    <EditText
+        android:id="@+id/add_et_explain"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:text="깔끔한 오렌지향"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

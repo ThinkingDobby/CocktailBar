@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".TasteActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/taste_cv_1"
+        android:layout_width="180dp"
+        android:layout_height="220dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="3dp"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="1dp"
+        app:layout_constraintEnd_toStartOf="@+id/taste_gl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/taste_cv_2"
+        android:layout_width="180dp"
+        android:layout_height="220dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="3dp"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/taste_gl"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/taste_cv_3"
+        android:layout_width="180dp"
+        android:layout_height="220dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="3dp"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/taste_cv_5"
+        app:layout_constraintEnd_toEndOf="@id/taste_gl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/taste_cv_1" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/taste_cv_4"
+        android:layout_width="180dp"
+        android:layout_height="220dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="3dp"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/taste_cv_6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/taste_gl"
+        app:layout_constraintTop_toBottomOf="@id/taste_cv_2" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/taste_cv_5"
+        android:layout_width="180dp"
+        android:layout_height="220dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="3dp"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/taste_gl"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/taste_cv_6"
+        android:layout_width="180dp"
+        android:layout_height="220dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="3dp"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/taste_gl"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/taste_gl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+</androidx.constraintlayout.widget.ConstraintLayout>
