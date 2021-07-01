@@ -90,6 +90,7 @@
         android:layout_width="300dp"
         android:layout_height="45dp"
         android:layout_marginBottom="15dp"
+        android:spinnerMode="dialog"
         app:layout_constraintBottom_toTopOf="@+id/add_et_explain"
         app:layout_constraintStart_toStartOf="@+id/add_et_explain" />
 
@@ -100,7 +101,7 @@
         android:layout_marginBottom="30dp"
         android:ems="10"
         android:gravity="start|top"
-        android:inputType="textMultiLine"
+        android:inputType="text"
         android:text="깔끔한 오렌지향"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
