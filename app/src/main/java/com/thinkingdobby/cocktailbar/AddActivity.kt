@@ -1,5 +1,6 @@
 package com.thinkingdobby.cocktailbar
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -7,11 +8,22 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import com.thinkingdobby.cocktailbar.data.Drink
+import com.thinkingdobby.cocktailbar.data.DrinkDB
 import kotlinx.android.synthetic.main.activity_add.*
 
-var tasteTypes = arrayOf("1", "2", "3", "4", "5", "6")
+var tasteTypes = arrayOf(
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6"
+)  // 변경 필요
 
 class AddActivity : AppCompatActivity() {
+
+    private lateinit var addRunnable: Runnable
 
     // toolBar
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -23,7 +35,12 @@ class AddActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_save -> {
-                // 내용 추가 필요 - 입력한 정보 저장
+                val addThread = Thread(addRunnable)
+                addThread.start()
+
+                val intent = Intent(this, MainActivity::class.java) // 추가 후 액티비티 추후 결정
+                startActivity(intent)
+                finish()
                 return true
             }
             else -> {
@@ -33,9 +50,26 @@ class AddActivity : AppCompatActivity() {
     }
     // toolBar
 
+    private var drinkDB : DrinkDB? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add)
+
+        var selectedTasteType = tasteTypes[0]
+
+        // Room add
+        drinkDB = DrinkDB.getInstance(this)
+
+        addRunnable = Runnable {
+            val newDrink = Drink()
+            newDrink.drinkName = add_et_name.text.toString()
+            newDrink.ingredient = add_et_ingredient.text.toString()
+            newDrink.tasteType = selectedTasteType
+            newDrink.explain = add_et_explain.text.toString()
+            drinkDB?.drinkDao()?.insert(newDrink)
+        }
+        // Room add
 
         // Spinner
         add_sp_tasteType.adapter = ArrayAdapter(this,
@@ -45,15 +79,17 @@ class AddActivity : AppCompatActivity() {
 
         add_sp_tasteType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(p0: AdapterView<*>?) {
-                println("test1")
             }
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-                println("test2")
-                // 내용 추가 필요 - position: 인덱스
+                selectedTasteType = tasteTypes[position]
             }
         }
         // Spinner
+    }
 
+    override fun onDestroy() {
+        DrinkDB.destroyInstance()
+        super.onDestroy()
     }
 }
