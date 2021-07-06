@@ -7,6 +7,8 @@ import com.thinkingdobby.cocktailbar.adapter.DrinkAdapter
 import com.thinkingdobby.cocktailbar.data.Drink
 import com.thinkingdobby.cocktailbar.data.DrinkDB
 import kotlinx.android.synthetic.main.activity_list.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class ListActivity : AppCompatActivity() {
 
@@ -19,17 +21,14 @@ class ListActivity : AppCompatActivity() {
 
         drinkDB = DrinkDB.getInstance(this)
 
-        val r = Runnable {
+        GlobalScope.launch {
             drinkList = drinkDB?.drinkDao()?.getAll()!!.sortedBy { it.drinkName }
 
-            val drinkAdapter = DrinkAdapter(this, drinkList)
+            val drinkAdapter = DrinkAdapter(this@ListActivity, drinkList)
             drinkAdapter.notifyDataSetChanged()
             list_rv.adapter = drinkAdapter
-            list_rv.layoutManager = LinearLayoutManager(this)
+            list_rv.layoutManager = LinearLayoutManager(this@ListActivity)
             list_rv.setHasFixedSize(true)
         }
-
-        val thread = Thread(r)
-        thread.start()
     }
 }
