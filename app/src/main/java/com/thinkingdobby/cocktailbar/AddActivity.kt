@@ -58,7 +58,7 @@ class AddActivity : AppCompatActivity() {
 
         var selectedTasteType = tasteTypes[0]
 
-        // Room add
+        // Room add - 코루틴으로 변경할 것
         drinkDB = DrinkDB.getInstance(this)
 
         addRunnable = Runnable {

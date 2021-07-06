@@ -13,6 +13,6 @@ interface DrinkDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(drink: Drink)
 
-    @Query("DELETE from Drink")
-    fun deleteAll()
+    @Query("DELETE FROM Drink WHERE id = :id")
+    fun delete(id: Long)
 }
