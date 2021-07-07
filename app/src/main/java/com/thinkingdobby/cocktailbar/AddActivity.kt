@@ -11,19 +11,22 @@ import android.widget.ArrayAdapter
 import com.thinkingdobby.cocktailbar.data.Drink
 import com.thinkingdobby.cocktailbar.data.DrinkDB
 import kotlinx.android.synthetic.main.activity_add.*
-
-var tasteTypes = arrayOf(
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6"
-)  // 변경 필요
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class AddActivity : AppCompatActivity() {
 
+    var tasteTypes = arrayOf(
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+    )  // 변경 필요
+
     private lateinit var addRunnable: Runnable
+    private var selectedTasteType = tasteTypes[0]
 
     // toolBar
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -35,8 +38,18 @@ class AddActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_save -> {
-                val addThread = Thread(addRunnable)
-                addThread.start()
+                // Room Add
+                GlobalScope.launch {
+                    drinkDB = DrinkDB.getInstance(this@AddActivity)
+
+                    val newDrink = Drink()
+                    newDrink.drinkName = add_et_name.text.toString()
+                    newDrink.ingredient = add_et_ingredient.text.toString()
+                    newDrink.tasteType = selectedTasteType
+                    newDrink.explain = add_et_explain.text.toString()
+                    drinkDB?.drinkDao()?.insert(newDrink)
+                }
+                // Room Add
 
                 val intent = Intent(this, ListActivity::class.java)
                 startActivity(intent)
@@ -61,21 +74,6 @@ class AddActivity : AppCompatActivity() {
         setSupportActionBar(toolBar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         // toolBar
-
-        var selectedTasteType = tasteTypes[0]
-
-        // Room add - 코루틴으로 변경할 것
-        drinkDB = DrinkDB.getInstance(this)
-
-        addRunnable = Runnable {
-            val newDrink = Drink()
-            newDrink.drinkName = add_et_name.text.toString()
-            newDrink.ingredient = add_et_ingredient.text.toString()
-            newDrink.tasteType = selectedTasteType
-            newDrink.explain = add_et_explain.text.toString()
-            drinkDB?.drinkDao()?.insert(newDrink)
-        }
-        // Room add
 
         // Spinner
         add_sp_tasteType.adapter = ArrayAdapter(this,

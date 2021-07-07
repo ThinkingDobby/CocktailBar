@@ -25,9 +25,11 @@ class DrinkAdapter(val db: DrinkDB, val drinks: List<Drink>)
     override fun onBindViewHolder(holder: DrinkViewHolder, position: Int) {
         holder.bind(drinks[position])
         holder.list_rv_btn_remove.setOnClickListener {
+            // Room Delete
             GlobalScope.launch {
                 db.drinkDao().delete(drinks[position])
             }
+            // Room Delete
         }
     }
 }

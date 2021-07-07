@@ -5,7 +5,7 @@ import androidx.room.*
 
 @Dao
 interface DrinkDao {
-    @Query("SELECT * FROM Drink")
+    @Query("SELECT * FROM Drink ORDER BY drinkName")
     fun getAll(): LiveData<List<Drink>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
