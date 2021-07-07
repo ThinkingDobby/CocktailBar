@@ -1,18 +1,16 @@
 package com.thinkingdobby.cocktailbar.data
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.lifecycle.LiveData
+import androidx.room.*
 
 @Dao
 interface DrinkDao {
     @Query("SELECT * FROM Drink")
-    fun getAll(): List<Drink>
+    fun getAll(): LiveData<List<Drink>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(drink: Drink)
 
-    @Query("DELETE FROM Drink WHERE id = :id")
-    fun delete(id: Long)
+    @Delete
+    fun delete(drink: Drink)
 }
