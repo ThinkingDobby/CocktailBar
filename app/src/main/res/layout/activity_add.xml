@@ -22,7 +22,6 @@
             android:text="Add Drink"
             android:textSize="22sp"
             android:textColor="@android:color/black"/>
-
     </androidx.appcompat.widget.Toolbar>
 
     <ImageView

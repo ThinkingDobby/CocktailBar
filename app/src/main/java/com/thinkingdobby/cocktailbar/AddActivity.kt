@@ -38,7 +38,7 @@ class AddActivity : AppCompatActivity() {
                 val addThread = Thread(addRunnable)
                 addThread.start()
 
-                val intent = Intent(this, ListActivity::class.java) // 추가 후 액티비티 추후 결정
+                val intent = Intent(this, ListActivity::class.java)
                 startActivity(intent)
                 finish()
                 return true
