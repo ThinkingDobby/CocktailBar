@@ -17,13 +17,13 @@ class ListActivity : AppCompatActivity() {
     // toolBar
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val menuInflater = menuInflater
-        menuInflater.inflate(R.menu., menu)
+        menuInflater.inflate(R.menu.menu_toadd, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_add -> {
+            R.id.menu_toadd -> {
                 val intent = Intent(this, AddActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -39,6 +39,12 @@ class ListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
+
+        // toolBar
+        val toolBar: androidx.appcompat.widget.Toolbar? = list_tb
+        setSupportActionBar(toolBar)
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
+        // toolBar
 
         drinkDB = DrinkDB.getInstance(this)
 

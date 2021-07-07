@@ -56,6 +56,12 @@ class AddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add)
 
+        // toolBar
+        val toolBar: androidx.appcompat.widget.Toolbar? = add_tb
+        setSupportActionBar(toolBar)
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
+        // toolBar
+
         var selectedTasteType = tasteTypes[0]
 
         // Room add - 코루틴으로 변경할 것
