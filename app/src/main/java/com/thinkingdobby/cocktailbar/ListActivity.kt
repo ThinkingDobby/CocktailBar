@@ -17,7 +17,9 @@ class ListActivity : AppCompatActivity() {
     // toolBar
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val menuInflater = menuInflater
-        menuInflater.inflate(R.menu.menu_toadd, menu)
+        if (admin) {
+            menuInflater.inflate(R.menu.menu_toadd, menu)
+        }
         return true
     }
 
@@ -54,6 +56,7 @@ class ListActivity : AppCompatActivity() {
         list_rv.setHasFixedSize(true)
 
         drinkDB?.drinkDao()?.getAll()!!.observe(this, androidx.lifecycle.Observer {
+            // getAll() 에서 LiveData 로 데이터 기져옴 -> Observer 로 변화 감지 가능
             drinkAdapter = DrinkAdapter(drinkDB!!, it)
             list_rv.adapter = drinkAdapter
         })

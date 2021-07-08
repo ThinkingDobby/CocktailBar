@@ -6,7 +6,7 @@ import androidx.room.*
 @Dao
 interface DrinkDao {
     @Query("SELECT * FROM Drink ORDER BY drinkName")
-    fun getAll(): LiveData<List<Drink>>
+    fun getAll(): LiveData<List<Drink>> // LiveData -> Observer 로 변화 감지 가능
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(drink: Drink)

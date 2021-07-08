@@ -2,6 +2,7 @@ package com.thinkingdobby.cocktailbar.viewHolder
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.thinkingdobby.cocktailbar.admin
 import com.thinkingdobby.cocktailbar.data.Drink
 import kotlinx.android.synthetic.main.drink_card.view.*
 
@@ -20,8 +21,9 @@ class DrinkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     }
 
     private fun activeRemoveBtn() {
-        // 관리자 권한 확인 후
-        list_rv_btn_remove.visibility = View.VISIBLE
-        list_rv_btn_remove.isClickable = true
+        if (admin) {
+            list_rv_btn_remove.visibility = View.VISIBLE
+            list_rv_btn_remove.isClickable = true
+        }
     }
 }
