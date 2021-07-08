@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_toadd"
+        android:id="@+id/menu_btn_add"
         android:title="추가"
         android:icon="@drawable/write"
         app:showAsAction="always" />

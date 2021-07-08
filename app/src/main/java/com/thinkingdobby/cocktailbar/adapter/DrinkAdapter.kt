@@ -1,8 +1,12 @@
 package com.thinkingdobby.cocktailbar.adapter
 
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.thinkingdobby.cocktailbar.DetailActivity
 import com.thinkingdobby.cocktailbar.R
 import com.thinkingdobby.cocktailbar.data.Drink
 import com.thinkingdobby.cocktailbar.data.DrinkDB
@@ -10,7 +14,7 @@ import com.thinkingdobby.cocktailbar.viewHolder.DrinkViewHolder
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class DrinkAdapter(val db: DrinkDB, val drinks: List<Drink>)
+class DrinkAdapter(val db: DrinkDB, val drinks: List<Drink>, val context: Context)
     : RecyclerView.Adapter<DrinkViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DrinkViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -30,6 +34,13 @@ class DrinkAdapter(val db: DrinkDB, val drinks: List<Drink>)
                 db.drinkDao().delete(drinks[position])
             }
             // Room Delete
+        }
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, DetailActivity::class.java)
+            var bundle = Bundle()
+            bundle.putParcelable("selectedDrink", drinks[position])
+            intent.putExtra("drinkBundle", bundle)
+            context.startActivity(intent)
         }
     }
 }

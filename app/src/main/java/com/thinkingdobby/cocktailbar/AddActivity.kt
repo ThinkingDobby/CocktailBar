@@ -37,7 +37,7 @@ class AddActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_save -> {
+            R.id.menu_btn_save -> {
                 // Room Add
                 GlobalScope.launch {
                     drinkDB = DrinkDB.getInstance(this@AddActivity)
