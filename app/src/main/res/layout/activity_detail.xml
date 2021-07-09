@@ -6,24 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".DetailActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/add_tb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detail"
+            android:textSize="22sp"
+            android:textColor="@android:color/black"/>
+    </androidx.appcompat.widget.Toolbar>
+
     <ImageView
         android:id="@+id/detail_iv_drink"
         android:layout_width="210dp"
         android:layout_height="280dp"
-        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toTopOf="@+id/detail_tv_drinkName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_tb"
         app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+    <Button
+        android:id="@+id/detail_rv_btn_remove"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/minus"
+        android:clickable="false"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_tb" />
 
     <TextView
         android:id="@+id/detail_tv_drinkName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="24sp"
-        android:layout_marginBottom="20dp"
+        android:text="코스모폴리탄"
+        android:textSize="40sp"
+        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toTopOf="@+id/detail_tv_ingredient"
         app:layout_constraintStart_toStartOf="@+id/detail_tv_explain" />
 
@@ -31,7 +59,7 @@
         android:id="@+id/detail_tv_ingredient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="보드카, 트리플섹, 라임즙, 크랜베리주스"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/detail_tv_explain"
         app:layout_constraintStart_toStartOf="@+id/detail_tv_explain" />
@@ -39,11 +67,12 @@
     <TextView
         android:id="@+id/detail_tv_explain"
         android:layout_width="0dp"
-        android:layout_height="250dp"
+        android:layout_height="220dp"
         android:layout_marginBottom="15dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:text="TextView"
+        android:text="오렌지 향과 깔끔한 맛"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

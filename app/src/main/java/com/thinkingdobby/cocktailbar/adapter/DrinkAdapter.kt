@@ -28,13 +28,6 @@ class DrinkAdapter(val db: DrinkDB, val drinks: List<Drink>, val context: Contex
 
     override fun onBindViewHolder(holder: DrinkViewHolder, position: Int) {
         holder.bind(drinks[position])
-        holder.list_rv_btn_remove.setOnClickListener {
-            // Room Delete
-            GlobalScope.launch {
-                db.drinkDao().delete(drinks[position])
-            }
-            // Room Delete
-        }
         holder.itemView.setOnClickListener {
             val intent = Intent(context, DetailActivity::class.java)
             var bundle = Bundle()
