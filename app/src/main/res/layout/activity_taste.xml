@@ -7,17 +7,34 @@
     android:orientation="horizontal"
     tools:context=".TasteActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/list_tb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Taste Type"
+            android:textSize="22sp"
+            android:textColor="@android:color/black"/>
+    </androidx.appcompat.widget.Toolbar>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/taste_cv_1"
         android:layout_width="180dp"
         android:layout_height="220dp"
         android:layout_margin="10dp"
         app:cardCornerRadius="3dp"
-        app:cardUseCompatPadding="true"
         app:cardElevation="1dp"
+        app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toStartOf="@+id/taste_gl"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/list_tb" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/taste_cv_2"
@@ -25,11 +42,11 @@
         android:layout_height="220dp"
         android:layout_margin="10dp"
         app:cardCornerRadius="3dp"
-        app:cardUseCompatPadding="true"
         app:cardElevation="1dp"
+        app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/taste_gl"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/list_tb" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/taste_cv_3"

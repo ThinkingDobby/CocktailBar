@@ -14,29 +14,6 @@ class ListActivity : AppCompatActivity() {
 
     private var drinkDB : DrinkDB? = null
 
-    // toolBar
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val menuInflater = menuInflater
-        if (admin) {
-            menuInflater.inflate(R.menu.menu_toadd, menu)
-        }
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu_btn_add -> {
-                val intent = Intent(this, AddActivity::class.java)
-                startActivity(intent)
-                return true
-            }
-            else -> {
-                return super.onOptionsItemSelected(item)
-            }
-        }
-    }
-    // toolBar
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
