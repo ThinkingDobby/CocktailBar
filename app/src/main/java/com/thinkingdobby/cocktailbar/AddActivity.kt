@@ -50,8 +50,6 @@ class AddActivity : AppCompatActivity() {
                 }
                 // Room Add
 
-                val intent = Intent(this, TasteActivity::class.java)
-                startActivity(intent)
                 finish()
                 return true
             }

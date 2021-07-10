@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.activity_add.*
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.activity_detail.add_tb
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class DetailActivity : AppCompatActivity() {
@@ -67,8 +68,6 @@ class DetailActivity : AppCompatActivity() {
             // Room Delete
             GlobalScope.launch {
                 drinkDB?.drinkDao()?.delete(drink)
-                val intent = Intent(this@DetailActivity, ListActivity::class.java)
-                startActivity(intent)
                 finish()
             }
             // Room Delete
