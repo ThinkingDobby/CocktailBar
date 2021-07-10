@@ -2,7 +2,6 @@ package com.thinkingdobby.cocktailbar.viewHolder
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.thinkingdobby.cocktailbar.admin
 import com.thinkingdobby.cocktailbar.data.Drink
 import kotlinx.android.synthetic.main.drink_card.view.*
 

@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import com.thinkingdobby.cocktailbar.data.Drink
 import com.thinkingdobby.cocktailbar.data.DrinkDB
+import com.thinkingdobby.cocktailbar.value.Admin
 import kotlinx.android.synthetic.main.activity_add.*
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.activity_detail.add_tb
@@ -57,7 +58,7 @@ class DetailActivity : AppCompatActivity() {
 
         drinkDB = DrinkDB.getInstance(this)
 
-        if (admin) {
+        if (Admin().getAdminValue()) {
             detail_rv_btn_remove.visibility = View.VISIBLE
             detail_rv_btn_remove.isClickable = true
         }

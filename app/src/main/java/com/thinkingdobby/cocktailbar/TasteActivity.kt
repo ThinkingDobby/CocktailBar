@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import com.thinkingdobby.cocktailbar.value.Admin
 import kotlinx.android.synthetic.main.activity_list.*
 import kotlinx.android.synthetic.main.activity_taste.*
 import kotlinx.android.synthetic.main.activity_taste.list_tb
@@ -23,7 +24,7 @@ class TasteActivity : AppCompatActivity() {
     // toolBar
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val menuInflater = menuInflater
-        if (admin) {
+        if (Admin().getAdminValue()) {
             menuInflater.inflate(R.menu.menu_toadd, menu)
         }
         return true
