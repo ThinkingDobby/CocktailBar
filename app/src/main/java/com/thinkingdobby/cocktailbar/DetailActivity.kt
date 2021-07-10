@@ -1,6 +1,5 @@
 package com.thinkingdobby.cocktailbar
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -8,12 +7,10 @@ import android.view.MenuItem
 import android.view.View
 import com.thinkingdobby.cocktailbar.data.Drink
 import com.thinkingdobby.cocktailbar.data.DrinkDB
-import com.thinkingdobby.cocktailbar.value.Admin
-import kotlinx.android.synthetic.main.activity_add.*
+import com.thinkingdobby.cocktailbar.login.Admin
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.activity_detail.add_tb
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class DetailActivity : AppCompatActivity() {

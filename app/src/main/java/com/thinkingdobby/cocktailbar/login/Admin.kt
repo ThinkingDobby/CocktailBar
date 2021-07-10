@@ -1,6 +1,6 @@
-package com.thinkingdobby.cocktailbar.value
+package com.thinkingdobby.cocktailbar.login
 
-class Admin() {
+class Admin {
     private var admin = true // 추후 변경
 
     fun getAdminValue(): Boolean {
