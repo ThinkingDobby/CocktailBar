@@ -25,7 +25,6 @@ class AddActivity : AppCompatActivity() {
         "6"
     )  // 변경 필요
 
-    private lateinit var addRunnable: Runnable
     private var selectedTasteType = tasteTypes[0]
 
     // toolBar

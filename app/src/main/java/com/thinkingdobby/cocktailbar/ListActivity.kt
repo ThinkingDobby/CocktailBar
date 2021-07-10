@@ -47,13 +47,14 @@ class ListActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         // toolBar
 
+        val tasteType = intent.getStringExtra("tasteType")!!
         drinkDB = DrinkDB.getInstance(this)
 
         var drinkAdapter: DrinkAdapter? = null
         list_rv.layoutManager = LinearLayoutManager(this@ListActivity)
         list_rv.setHasFixedSize(true)
 
-        drinkDB?.drinkDao()?.getAll()!!.observe(this, androidx.lifecycle.Observer {
+        drinkDB?.drinkDao()?.getByTasteType(tasteType)!!.observe(this, androidx.lifecycle.Observer {
             // getAll() 에서 LiveData 로 데이터 기져옴 -> Observer 로 변화 감지 가능
             drinkAdapter = DrinkAdapter(drinkDB!!, it, this@ListActivity)
             list_rv.adapter = drinkAdapter
