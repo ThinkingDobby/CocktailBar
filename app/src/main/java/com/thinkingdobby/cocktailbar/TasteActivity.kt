@@ -23,7 +23,7 @@ class TasteActivity : AppCompatActivity() {
     // toolBar
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val menuInflater = menuInflater
-        if (Admin().getAdminValue()) {
+        if (admin.getAdminValue()) {
             menuInflater.inflate(R.menu.menu_toadd, menu)
         }
         return true

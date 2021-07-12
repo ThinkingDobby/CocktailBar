@@ -38,4 +38,29 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/main_et_pwInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:ems="10"
+        android:hint="Input Password"
+        android:textSize="22sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/main_btn_pwSubmit"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="확인"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/main_et_pwInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toEndOf="@+id/main_et_pwInput" />
 </androidx.constraintlayout.widget.ConstraintLayout>

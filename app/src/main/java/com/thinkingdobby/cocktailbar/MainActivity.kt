@@ -3,9 +3,14 @@ package com.thinkingdobby.cocktailbar
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
+import com.thinkingdobby.cocktailbar.login.Admin
 import kotlinx.android.synthetic.main.activity_main.*
 import java.security.DigestException
 import java.security.MessageDigest
+
+val admin = Admin() // 룸 라이브러리 이용해 저장하도록 구현
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,8 +24,37 @@ class MainActivity : AppCompatActivity() {
         }
 
         main_btn_login.setOnClickListener {
-            // 관리자 등록이 되어있지 않으면 -> 새 패스워드 입력 -> 저장
-            // 관리자 등록이 되어있는 경우 -> 패스워드 입력 -> 대조 -> 일치 시 로그인
+            val passwordExist = admin.checkPasswordExist()
+            main_btn_login.visibility = View.INVISIBLE
+            main_et_pwInput.visibility = View.VISIBLE
+            main_btn_pwSubmit.visibility = View.VISIBLE
+            if (passwordExist) {
+                main_et_pwInput.hint = "비밀번호를 입력하세요"
+            } else {
+                main_et_pwInput.hint = "새 비밀번호를 입력하세요"
+            }
+        }
+
+        main_btn_pwSubmit.setOnClickListener {
+            val passwordExist = admin.checkPasswordExist()
+            if (passwordExist) {
+                val success = admin.login(main_et_pwInput.text.toString())
+                if (success) {
+                    main_et_pwInput.visibility = View.INVISIBLE
+                    main_btn_pwSubmit.visibility = View.INVISIBLE
+                    Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "로그인 실패", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                admin.setPassword(main_et_pwInput.text.toString())
+                main_et_pwInput.hint = "비밀번호를 입력하세요"
+                Toast.makeText(this, "비밀번호가 설정되었습니다", Toast.LENGTH_SHORT).show()
+
+                main_et_pwInput.visibility = View.INVISIBLE
+                main_btn_pwSubmit.visibility = View.INVISIBLE
+                main_btn_login.visibility = View.VISIBLE
+            }
         }
     }
 }
