@@ -1,11 +1,11 @@
 package com.thinkingdobby.cocktailbar
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import com.thinkingdobby.cocktailbar.data.Drink
@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 
 class AddActivity : AppCompatActivity() {
 
-    var tasteTypes = arrayOf(
+    private var tasteTypes = arrayOf(
         "1",
         "2",
         "3",
@@ -24,6 +24,8 @@ class AddActivity : AppCompatActivity() {
         "5",
         "6"
     )  // 변경 필요
+
+    private var imm: InputMethodManager? = null
 
     private var selectedTasteType = tasteTypes[0]
 
@@ -66,6 +68,8 @@ class AddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add)
 
+        imm = getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+
         // toolBar
         val toolBar: androidx.appcompat.widget.Toolbar? = add_tb
         setSupportActionBar(toolBar)
@@ -87,6 +91,10 @@ class AddActivity : AppCompatActivity() {
             }
         }
         // Spinner
+    }
+
+    fun hideKeyboard(v: View) {
+        imm?.hideSoftInputFromWindow(v.windowToken, 0)
     }
 
     override fun onDestroy() {
