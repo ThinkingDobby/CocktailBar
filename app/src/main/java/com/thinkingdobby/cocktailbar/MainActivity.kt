@@ -5,12 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.thinkingdobby.cocktailbar.data.MyApplication
 import com.thinkingdobby.cocktailbar.login.Admin
 import kotlinx.android.synthetic.main.activity_main.*
 import java.security.DigestException
 import java.security.MessageDigest
-
-val admin = Admin() // 룸 라이브러리 이용해 저장하도록 구현
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         main_btn_login.setOnClickListener {
-            val passwordExist = admin.checkPasswordExist()
+            val passwordExist = MyApplication.prefs.getString("password") != "Not Set"
             main_btn_login.visibility = View.INVISIBLE
             main_et_pwInput.visibility = View.VISIBLE
             main_btn_pwSubmit.visibility = View.VISIBLE
@@ -36,9 +35,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         main_btn_pwSubmit.setOnClickListener {
-            val passwordExist = admin.checkPasswordExist()
+            val passwordExist = MyApplication.prefs.getString("password") != "Not Set"
             if (passwordExist) {
-                val success = admin.login(main_et_pwInput.text.toString())
+                val success = Admin().login(main_et_pwInput.text.toString())
                 if (success) {
                     main_et_pwInput.visibility = View.INVISIBLE
                     main_btn_pwSubmit.visibility = View.INVISIBLE
@@ -47,7 +46,8 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "로그인 실패", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                admin.setPassword(main_et_pwInput.text.toString())
+                Admin().setPassword(main_et_pwInput.text.toString())
+                main_et_pwInput.setText("")
                 main_et_pwInput.hint = "비밀번호를 입력하세요"
                 Toast.makeText(this, "비밀번호가 설정되었습니다", Toast.LENGTH_SHORT).show()
 

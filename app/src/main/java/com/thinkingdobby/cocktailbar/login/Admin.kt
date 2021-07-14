@@ -1,11 +1,13 @@
 package com.thinkingdobby.cocktailbar.login
 
-class Admin {
-    private var admin = false // 추후 변경
-    private var password = ""
+import com.thinkingdobby.cocktailbar.data.MyApplication
 
+class Admin {
+    companion object {
+        private var admin = false // 추후 변경
+    }
     private fun checkPassword(input: String): Boolean {
-        return input.hashSHA256() == password
+        return input.hashSHA256() == MyApplication.prefs.getString("password")
     }
 
 
@@ -17,15 +19,10 @@ class Admin {
         return admin
     }
 
-    fun checkPasswordExist(): Boolean {
-        return password != ""
-    }
 
     fun setPassword(password: String) {
-
-        this.password = password.hashSHA256()
+        MyApplication.prefs.setString("password", password.hashSHA256())
     }
-
 
     fun login(input: String): Boolean {
         if (checkPassword(input)) {
