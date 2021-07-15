@@ -27,14 +27,23 @@
 
     <ImageView
         android:id="@+id/add_iv_drink"
-        android:layout_width="225dp"
-        android:layout_height="300dp"
+        android:layout_width="210dp"
+        android:layout_height="280dp"
         app:layout_constraintBottom_toTopOf="@+id/add_tv_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_tb"
         app:srcCompat="@drawable/ic_launcher_foreground"
         tools:ignore="VectorDrawableCompat" />
+
+    <ImageView
+        android:id="@+id/add_btn_pickImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/add_iv_drink"
+        app:layout_constraintStart_toEndOf="@+id/add_iv_drink"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
 
     <TextView
         android:id="@+id/add_tv_name"
@@ -105,6 +114,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,9 @@
 package com.thinkingdobby.cocktailbar
 
+import android.Manifest
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -8,6 +12,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.app.ActivityCompat
 import com.thinkingdobby.cocktailbar.data.Drink
 import com.thinkingdobby.cocktailbar.data.DrinkDB
 import kotlinx.android.synthetic.main.activity_add.*
@@ -28,6 +33,9 @@ class AddActivity : AppCompatActivity() {
     private var imm: InputMethodManager? = null
 
     private var selectedTasteType = tasteTypes[0]
+
+    private val PICK_IMAGE = 0
+    private var uriPhoto : Uri? = Uri.parse("android.resource://com.thinkingdobby.cocktailbar/drawable/default_image")
 
     // toolBar
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -68,13 +76,18 @@ class AddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add)
 
-        imm = getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+        // request permission
+        ActivityCompat.requestPermissions(this,
+            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 1)
+        // request permission
 
         // toolBar
         val toolBar: androidx.appcompat.widget.Toolbar? = add_tb
         setSupportActionBar(toolBar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         // toolBar
+
+        imm = getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as InputMethodManager?
 
         // Spinner
         add_sp_tasteType.adapter = ArrayAdapter(this,
@@ -91,10 +104,34 @@ class AddActivity : AppCompatActivity() {
             }
         }
         // Spinner
+
+        add_btn_pickImage.setOnClickListener {
+            pickImage()
+        }
     }
 
     fun hideKeyboard(v: View) {
         imm?.hideSoftInputFromWindow(v.windowToken, 0)
+    }
+
+    private fun pickImage() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+
+        startActivityForResult(Intent.createChooser(intent, "Load Picture"), PICK_IMAGE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PICK_IMAGE) {
+            if (resultCode == Activity.RESULT_OK) {
+                uriPhoto = data?.data
+                add_iv_drink.setImageURI(uriPhoto)
+            } else {
+                finish()
+            }
+        }
     }
 
     override fun onDestroy() {
