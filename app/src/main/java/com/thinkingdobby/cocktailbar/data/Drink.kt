@@ -12,6 +12,7 @@ class Drink(@PrimaryKey var id: Long?,
             @ColumnInfo(name = "drinkName") var drinkName: String?,
             @ColumnInfo(name = "ingredient") var ingredient: String?,
             @ColumnInfo(name = "tasteType") var tasteType: String?,
-            @ColumnInfo(name = "explain") var explain: String?) : Parcelable{
-    constructor(): this(null, "", "", "", "")
+            @ColumnInfo(name = "explain") var explain: String?,
+            @ColumnInfo(name = "image", typeAffinity = ColumnInfo.BLOB) var image: ByteArray?) : Parcelable{
+    constructor(): this(null, "", "", "", "", null)
 }

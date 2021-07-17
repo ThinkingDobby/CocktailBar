@@ -3,9 +3,11 @@ package com.thinkingdobby.cocktailbar
 import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -18,6 +20,7 @@ import com.thinkingdobby.cocktailbar.data.DrinkDB
 import kotlinx.android.synthetic.main.activity_add.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.io.ByteArrayOutputStream
 
 class AddActivity : AppCompatActivity() {
 
@@ -56,6 +59,7 @@ class AddActivity : AppCompatActivity() {
                     newDrink.ingredient = add_et_ingredient.text.toString()
                     newDrink.tasteType = selectedTasteType
                     newDrink.explain = add_et_explain.text.toString()
+                    newDrink.image = getByteArrayFromDrawable(uriPhoto!!)
                     drinkDB?.drinkDao()?.insert(newDrink)
                 }
                 // Room Add
@@ -120,6 +124,14 @@ class AddActivity : AppCompatActivity() {
         intent.action = Intent.ACTION_GET_CONTENT
 
         startActivityForResult(Intent.createChooser(intent, "Load Picture"), PICK_IMAGE)
+    }
+
+    private fun getByteArrayFromDrawable(uri: Uri): ByteArray {
+        val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
+        val stream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+
+        return stream.toByteArray()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

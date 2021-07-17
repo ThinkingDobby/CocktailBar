@@ -1,5 +1,6 @@
 package com.thinkingdobby.cocktailbar.viewHolder
 
+import android.graphics.BitmapFactory
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.thinkingdobby.cocktailbar.data.Drink
@@ -13,6 +14,7 @@ class DrinkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(drink: Drink) {
         list_rv_tv_name.text = drink.drinkName
         list_rv_ingredient.text = drink.ingredient
-        //list_rv_img
+        val bitmap = BitmapFactory.decodeByteArray(drink.image, 0, drink.image!!.size)
+        list_rv_img.setImageBitmap(bitmap)
     }
 }
