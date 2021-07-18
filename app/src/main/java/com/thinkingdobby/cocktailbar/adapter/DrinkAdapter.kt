@@ -11,8 +11,6 @@ import com.thinkingdobby.cocktailbar.R
 import com.thinkingdobby.cocktailbar.data.Drink
 import com.thinkingdobby.cocktailbar.data.DrinkDB
 import com.thinkingdobby.cocktailbar.viewHolder.DrinkViewHolder
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 
 class DrinkAdapter(val db: DrinkDB, val drinks: List<Drink>, val context: Context)
     : RecyclerView.Adapter<DrinkViewHolder>() {

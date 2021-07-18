@@ -1,5 +1,6 @@
 package com.thinkingdobby.cocktailbar
 
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -53,6 +54,9 @@ class DetailActivity : AppCompatActivity() {
         detail_tv_drinkName.text = drink.drinkName
         detail_tv_ingredient.text = drink.ingredient
         detail_tv_explain.text = drink.explain
+
+        val bitmap = BitmapFactory.decodeByteArray(drink.image, 0, drink.image!!.size)
+        detail_iv_drink.setImageBitmap(bitmap)
 
         drinkDB = DrinkDB.getInstance(this)
 
