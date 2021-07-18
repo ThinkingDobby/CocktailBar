@@ -47,8 +47,8 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         // toolBar
 
-        val bundle = intent.getBundleExtra("drinkBundle")!!
-        val drink = bundle.getParcelable<Drink>("selectedDrink")!!
+        val bundle = intent.extras
+        val drink = bundle!!.getParcelable<Drink>("selectedDrink")!!
 
         detail_tv_drinkName.text = drink.drinkName
         detail_tv_ingredient.text = drink.ingredient

@@ -30,9 +30,9 @@ class DrinkAdapter(val db: DrinkDB, val drinks: List<Drink>, val context: Contex
         holder.bind(drinks[position])
         holder.itemView.setOnClickListener {
             val intent = Intent(context, DetailActivity::class.java)
-            var bundle = Bundle()
+            val bundle = Bundle()
             bundle.putParcelable("selectedDrink", drinks[position])
-            intent.putExtra("drinkBundle", bundle)
+            intent.putExtras(bundle)
             context.startActivity(intent)
         }
     }

@@ -129,7 +129,7 @@ class AddActivity : AppCompatActivity() {
     private fun getByteArrayFromDrawable(uri: Uri): ByteArray {
         val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
         val stream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
 
         return stream.toByteArray()
     }
