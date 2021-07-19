@@ -10,7 +10,6 @@ import com.thinkingdobby.cocktailbar.data.Drink
 import com.thinkingdobby.cocktailbar.data.DrinkDB
 import com.thinkingdobby.cocktailbar.login.Admin
 import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.activity_detail.add_tb
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -18,6 +17,7 @@ class DetailActivity : AppCompatActivity() {
 
     private var drinkDB : DrinkDB? = null
 
+    /*
     // toolBar
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val menuInflater = menuInflater
@@ -37,16 +37,19 @@ class DetailActivity : AppCompatActivity() {
         }
     }
     // toolBar
+     */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
+        /*
         // toolBar
         val toolBar: androidx.appcompat.widget.Toolbar? = add_tb
         setSupportActionBar(toolBar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         // toolBar
+         */
 
         val bundle = intent.extras
         val drink = bundle!!.getParcelable<Drink>("selectedDrink")!!

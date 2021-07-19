@@ -27,8 +27,8 @@
 
     <ImageView
         android:id="@+id/add_iv_drink"
-        android:layout_width="210dp"
-        android:layout_height="280dp"
+        android:layout_width="180dp"
+        android:layout_height="240dp"
         app:layout_constraintBottom_toTopOf="@+id/add_tv_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
