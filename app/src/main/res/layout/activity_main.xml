@@ -7,19 +7,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:onClick="hideKeyboard"
+    android:background="@drawable/gradient_main"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/main_tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="정왕동 칵테일바"
+        android:text="정왕동 칵테일"
         android:textSize="50sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/main_btn_enter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.55" />
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ImageView
+        android:layout_width="170dp"
+        android:layout_height="400dp"
+        android:src="@drawable/main_logo"
+        app:layout_constraintBottom_toTopOf="@+id/main_btn_enter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
     <Button
         android:id="@+id/main_btn_enter"
