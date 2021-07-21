@@ -1,17 +1,28 @@
 package com.thinkingdobby.cocktailbar
 
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Matrix
+import android.graphics.drawable.RotateDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.core.graphics.rotationMatrix
+import androidx.exifinterface.media.ExifInterface
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.request.RequestOptions
 import com.thinkingdobby.cocktailbar.data.Drink
 import com.thinkingdobby.cocktailbar.data.DrinkDB
 import com.thinkingdobby.cocktailbar.login.Admin
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.io.File
+import java.io.IOException
 
 class DetailActivity : AppCompatActivity() {
 
@@ -58,8 +69,28 @@ class DetailActivity : AppCompatActivity() {
         detail_tv_ingredient.text = drink.ingredient
         detail_tv_explain.text = drink.explain
 
-        val bitmap = BitmapFactory.decodeByteArray(drink.image, 0, drink.image!!.size)
-        detail_iv_drink.setImageBitmap(bitmap)
+        var bitmap = BitmapFactory.decodeByteArray(drink.image, 0, drink.image!!.size)
+        //detail_iv_drink.setImageBitmap(bitmap)
+
+        fun imgRotate(bmp: Bitmap): Bitmap {
+            val width = bmp.width
+            val height = bmp.height
+
+            val matrix = Matrix()
+            matrix.postRotate((90).toFloat())
+
+            val resizedBitmap = Bitmap.createBitmap(bmp, 0, 0, width, height, matrix, true)
+            bmp.recycle()
+
+            return resizedBitmap
+        }
+
+        bitmap = imgRotate(bitmap)
+
+        Glide.with(applicationContext).asBitmap()
+            .load(bitmap)
+            .into(detail_iv_drink)
+
 
         drinkDB = DrinkDB.getInstance(this)
 
