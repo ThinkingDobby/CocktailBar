@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:onClick="hideKeyboard"
-    android:background="@drawable/gradient_main"
+    android:background="@drawable/main_back"
     tools:context=".MainActivity">
 
     <TextView
@@ -22,7 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.6" />
 
     <ImageView
         android:layout_width="170dp"
@@ -32,13 +32,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.7" />
 
     <Button
         android:id="@+id/main_btn_enter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="메뉴판"
+        android:background="#DAE3F3"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/main_btn_login"
         app:layout_constraintEnd_toEndOf="@+id/main_btn_login"
@@ -49,6 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="관리자 로그인"
+        android:background="#DAE3F3"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,4 +80,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toEndOf="@+id/main_et_pwInput" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
