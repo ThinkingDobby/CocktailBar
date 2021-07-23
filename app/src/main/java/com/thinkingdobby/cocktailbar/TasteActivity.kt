@@ -15,9 +15,7 @@ class TasteActivity : AppCompatActivity() {
         "1",
         "2",
         "3",
-        "4",
-        "5",
-        "6"
+        "4"
     )
 
     // toolBar
@@ -59,11 +57,9 @@ class TasteActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        taste_cv_1.setOnClickListener { sendIntent(tasteTypes[0]) }
-        taste_cv_2.setOnClickListener { sendIntent(tasteTypes[1]) }
-        taste_cv_3.setOnClickListener { sendIntent(tasteTypes[2]) }
-        taste_cv_4.setOnClickListener { sendIntent(tasteTypes[3]) }
-        taste_cv_5.setOnClickListener { sendIntent(tasteTypes[4]) }
-        taste_cv_6.setOnClickListener { sendIntent(tasteTypes[5]) }
+        taste_v_1.setOnClickListener { sendIntent(tasteTypes[0]) }
+        taste_v_2.setOnClickListener { sendIntent(tasteTypes[1]) }
+        taste_v_3.setOnClickListener { sendIntent(tasteTypes[2]) }
+        taste_v_4.setOnClickListener { sendIntent(tasteTypes[3]) }
     }
 }

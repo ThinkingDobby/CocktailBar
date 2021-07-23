@@ -28,9 +28,7 @@ class AddActivity : AppCompatActivity() {
         "1",
         "2",
         "3",
-        "4",
-        "5",
-        "6"
+        "4"
     )  // 변경 필요
 
     private var imm: InputMethodManager? = null

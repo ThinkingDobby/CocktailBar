@@ -18,12 +18,6 @@ class ListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
 
-        // toolBar
-        val toolBar: androidx.appcompat.widget.Toolbar? = list_tb
-        setSupportActionBar(toolBar)
-        supportActionBar!!.setDisplayShowTitleEnabled(false)
-        // toolBar
-
         val tasteType = intent.getStringExtra("tasteType")!!
         drinkDB = DrinkDB.getInstance(this)
 
