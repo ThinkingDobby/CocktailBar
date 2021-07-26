@@ -1,10 +1,13 @@
 package com.thinkingdobby.cocktailbar
 
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.thinkingdobby.cocktailbar.adapter.DrinkAdapter
 import com.thinkingdobby.cocktailbar.data.DrinkDB
@@ -20,6 +23,20 @@ class ListActivity : AppCompatActivity() {
 
         val tasteType = intent.getStringExtra("tasteType")!!
         drinkDB = DrinkDB.getInstance(this)
+
+        val nowColor = when (tasteType) {
+            "1" -> "#FFCCCC"
+            "2" -> "#DAE3F3"
+            "3" -> "#FBE5D6"
+            else -> "#AFABAB"
+        }
+
+        // statusBar
+        @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+        window.statusBarColor= Color.parseColor(nowColor)
+        // statusBar
+
+        list_rv.setBackgroundColor(Color.parseColor(nowColor))
 
         var drinkAdapter: DrinkAdapter? = null
         list_rv.layoutManager = LinearLayoutManager(this@ListActivity)

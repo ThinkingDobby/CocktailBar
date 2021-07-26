@@ -1,10 +1,14 @@
 package com.thinkingdobby.cocktailbar
 
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import androidx.annotation.RequiresApi
 import com.thinkingdobby.cocktailbar.login.Admin
 import kotlinx.android.synthetic.main.activity_taste.*
 import kotlinx.android.synthetic.main.activity_taste.list_tb
@@ -41,9 +45,19 @@ class TasteActivity : AppCompatActivity() {
     }
     // toolBar
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_taste)
+
+        // statusBar
+        @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+        window.statusBarColor= Color.parseColor("#FFFFFF")
+
+        @RequiresApi(Build.VERSION_CODES.M)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        // statusBar
 
         // toolBar
         val toolBar: androidx.appcompat.widget.Toolbar? = list_tb

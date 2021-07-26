@@ -11,12 +11,10 @@ import kotlinx.android.synthetic.main.drink_card.view.*
 
 class DrinkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val list_rv_tv_name = itemView.list_rv_tv_name
-    val list_rv_ingredient = itemView.list_rv_tv_ingredient
     val list_rv_img = itemView.list_rv_img
 
     fun bind(drink: Drink) {
         list_rv_tv_name.text = drink.drinkName
-        list_rv_ingredient.text = drink.ingredient
         var bitmap = BitmapFactory.decodeByteArray(drink.image, 0, drink.image!!.size)
 
         fun imgRotate(bmp: Bitmap): Bitmap {
