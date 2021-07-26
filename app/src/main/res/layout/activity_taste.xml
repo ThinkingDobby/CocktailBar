@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     tools:context=".TasteActivity"
+    android:background="@android:color/white"
     >
 
     <androidx.appcompat.widget.Toolbar
@@ -23,110 +24,104 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.31" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/taste_gl_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.53" />
+        app:layout_constraintGuide_percent="0.54" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/taste_gl_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.47" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.77" />
 
-    <View
+    <TextView
         android:id="@+id/taste_v_1"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="10dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center_vertical"
+        android:text="달콤하고\n부드러운 맛"
+        android:textSize="40sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/list_tb"
         app:layout_constraintBottom_toBottomOf="@id/taste_gl_1"
         android:background="#FFCCCC"/>
 
-    <ImageView
-        android:id="@+id/taste_iv_text1"
-        android:layout_width="450dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/taste_gl_1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_tb"
-        app:srcCompat="@drawable/taste_text1" />
 
-    <View
+    <TextView
         android:id="@+id/taste_v_2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="20dp"
+        android:gravity="center_vertical"
+        android:textAlignment="viewEnd"
+        android:text="달콤하지만\n높은 도수"
+        android:textSize="40sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/taste_gl_3"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/taste_gl_1"
         app:layout_constraintBottom_toBottomOf="@id/taste_gl_2"
-        android:background="#DAE3F3"/>
+        android:background="#DAE3F3"
+        tools:ignore="RtlCompat" />
 
-    <ImageView
-        android:id="@+id/taste_iv_text2"
-        android:paddingTop="40dp"
-        android:layout_width="200dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/taste_gl_3"
-        app:layout_constraintTop_toTopOf="@id/taste_gl_1"
-        app:layout_constraintBottom_toBottomOf="@id/taste_gl_2"
-        app:srcCompat="@drawable/taste_text2"/>
-
-    <View
+    <TextView
         android:id="@+id/taste_v_3"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="5dp"
-        app:layout_constraintStart_toStartOf="@id/taste_gl_3"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center_vertical"
+        android:text="깔끔하고\n높은 도수"
+        android:textSize="40sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/taste_gl_1"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/taste_gl_2"
+        app:layout_constraintBottom_toBottomOf="@id/taste_gl_3"
         android:background="#FBE5D6"/>
 
-    <ImageView
-        android:id="@+id/taste_iv_text3"
-        android:layout_width="200dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/taste_gl_3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/taste_gl_1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/taste_text3"/>
 
-    <View
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="350dp"
+        app:layout_constraintTop_toTopOf="@id/taste_v_3"
+        app:srcCompat="@drawable/glass3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/taste_gl_3"/>
+
+    <TextView
         android:id="@+id/taste_v_4"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="20dp"
+        android:gravity="center_vertical"
+        android:text="그 외의\n음료"
+        android:textSize="40sp"
+        android:textColor="@android:color/white"
+        android:textAlignment="viewEnd"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/taste_gl_3"
-        app:layout_constraintTop_toTopOf="@id/taste_gl_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/taste_gl_3"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="#AFABAB"/>
+        android:background="#AFABAB"
+        tools:ignore="RtlCompat" />
 
-    <ImageView
-        android:id="@+id/taste_iv_text4"
-        android:layout_width="200dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="150dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/taste_gl_3"
-        app:layout_constraintTop_toTopOf="@id/taste_gl_2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/taste_text4"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
