@@ -1,6 +1,8 @@
 package com.thinkingdobby.cocktailbar
 
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.thinkingdobby.cocktailbar.adapter.DrinkAdapter
 import com.thinkingdobby.cocktailbar.data.DrinkDB
 import kotlinx.android.synthetic.main.activity_list.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class ListActivity : AppCompatActivity() {
 
@@ -43,8 +47,15 @@ class ListActivity : AppCompatActivity() {
         list_rv.setHasFixedSize(true)
 
         drinkDB?.drinkDao()?.getByTasteType(tasteType)!!.observe(this, androidx.lifecycle.Observer {
+            val bitmapList = mutableListOf<Bitmap>()
+            for (i in it) {
+                val options = BitmapFactory.Options()
+                options.inSampleSize = 4
+                val bitmap = BitmapFactory.decodeByteArray(i.image, 0, i.image!!.size, options)
+                bitmapList.add(bitmap)
+            }
             // getAll() 에서 LiveData 로 데이터 기져옴 -> Observer 로 변화 감지 가능
-            drinkAdapter = DrinkAdapter(drinkDB!!, it, this@ListActivity)
+            drinkAdapter = DrinkAdapter(drinkDB!!, it, bitmapList, this@ListActivity)
             list_rv.adapter = drinkAdapter
         })
     }

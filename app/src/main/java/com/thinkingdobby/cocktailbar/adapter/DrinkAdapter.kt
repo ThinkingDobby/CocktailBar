@@ -2,6 +2,7 @@ package com.thinkingdobby.cocktailbar.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,7 +13,7 @@ import com.thinkingdobby.cocktailbar.data.Drink
 import com.thinkingdobby.cocktailbar.data.DrinkDB
 import com.thinkingdobby.cocktailbar.viewHolder.DrinkViewHolder
 
-class DrinkAdapter(val db: DrinkDB, val drinks: List<Drink>, val context: Context)
+class DrinkAdapter(val db: DrinkDB, val drinks: List<Drink>, val bitmapList: List<Bitmap>, val context: Context)
     : RecyclerView.Adapter<DrinkViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DrinkViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -25,7 +26,7 @@ class DrinkAdapter(val db: DrinkDB, val drinks: List<Drink>, val context: Contex
     }
 
     override fun onBindViewHolder(holder: DrinkViewHolder, position: Int) {
-        holder.bind(drinks[position])
+        holder.bind(drinks[position], bitmapList[position])
         holder.itemView.setOnClickListener {
             val intent = Intent(context, DetailActivity::class.java)
             val bundle = Bundle()

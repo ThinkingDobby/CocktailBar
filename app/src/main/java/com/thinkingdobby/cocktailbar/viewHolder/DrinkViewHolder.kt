@@ -13,9 +13,9 @@ class DrinkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val list_rv_tv_name = itemView.list_rv_tv_name
     val list_rv_img = itemView.list_rv_img
 
-    fun bind(drink: Drink) {
+    fun bind(drink: Drink, bitmap: Bitmap) {
         list_rv_tv_name.text = drink.drinkName
-        var bitmap = BitmapFactory.decodeByteArray(drink.image, 0, drink.image!!.size)
+
 
         fun imgRotate(bmp: Bitmap): Bitmap {
             val width = bmp.width
@@ -30,8 +30,6 @@ class DrinkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             return resizedBitmap
         }
 
-        bitmap = imgRotate(bitmap)
-
-        list_rv_img.setImageBitmap(bitmap)
+        list_rv_img.setImageBitmap(imgRotate(bitmap))
     }
 }
