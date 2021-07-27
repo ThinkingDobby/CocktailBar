@@ -4,7 +4,9 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.net.Uri
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
@@ -14,6 +16,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import com.thinkingdobby.cocktailbar.data.Drink
 import com.thinkingdobby.cocktailbar.data.DrinkDB
@@ -83,6 +86,14 @@ class AddActivity : AppCompatActivity() {
             arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 1)
         // request permission
 
+        // statusBar
+        @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+        window.statusBarColor= Color.parseColor("#FFFFFF")
+
+        @RequiresApi(Build.VERSION_CODES.M)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        // statusBar
+
         // toolBar
         val toolBar: androidx.appcompat.widget.Toolbar? = add_tb
         setSupportActionBar(toolBar)
@@ -127,7 +138,7 @@ class AddActivity : AppCompatActivity() {
     private fun getByteArrayFromDrawable(uri: Uri): ByteArray {
         val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
         val stream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 30, stream)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 10, stream)
 
         return stream.toByteArray()
     }

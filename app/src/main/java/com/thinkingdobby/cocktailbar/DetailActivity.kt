@@ -1,9 +1,6 @@
 package com.thinkingdobby.cocktailbar
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Color
-import android.graphics.Matrix
+import android.graphics.*
 import android.graphics.drawable.RotateDrawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -107,8 +104,11 @@ class DetailActivity : AppCompatActivity() {
         bitmap = imgRotate(bitmap)
 
         Glide.with(applicationContext).asBitmap()
+            .centerCrop()
             .load(bitmap)
             .into(detail_iv_drink)
+
+        detail_iv_drink.setColorFilter(Color.parseColor("#BDBDBD"), PorterDuff.Mode.MULTIPLY);
 
 
         drinkDB = DrinkDB.getInstance(this)

@@ -8,10 +8,8 @@
 
     <ImageView
         android:id="@+id/detail_iv_drink"
-        android:layout_width="225dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/detail_tv_ingredient"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -35,35 +33,41 @@
         android:layout_marginBottom="15dp"
         android:text="코스모폴리탄"
         android:textColor="@android:color/white"
-        android:textStyle="bold"
+        android:textAlignment="center"
         android:textSize="45sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/detail_iv_drink"
         app:layout_constraintEnd_toEndOf="@+id/detail_iv_drink"
         app:layout_constraintStart_toStartOf="@+id/detail_iv_drink"
-        app:layout_constraintTop_toTopOf="@+id/detail_iv_drink" />
+        app:layout_constraintTop_toTopOf="@+id/detail_iv_drink"
+        app:layout_constraintVertical_bias="0.4" />
 
     <TextView
         android:id="@+id/detail_tv_ingredient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@android:color/white"
         android:text="보드카, 트리플섹, 라임즙, 크랜베리주스"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/detail_tv_explain"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/detail_tv_explain" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail_tv_drinkName" />
 
     <TextView
         android:id="@+id/detail_tv_explain"
         android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginBottom="15dp"
+        android:layout_height="150dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="15dp"
         android:text="오렌지 향과 깔끔한 맛"
         android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:lineSpacingExtra="3dp"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail_tv_ingredient" />
 </androidx.constraintlayout.widget.ConstraintLayout>
