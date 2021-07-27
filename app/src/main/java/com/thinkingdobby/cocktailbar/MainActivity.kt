@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         main_btn_enter.setOnClickListener {
             val intent = Intent(this, TasteActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         }
 
         main_btn_login.setOnClickListener {
@@ -67,5 +68,10 @@ class MainActivity : AppCompatActivity() {
 
     fun hideKeyboard(v: View) {
         imm?.hideSoftInputFromWindow(v.windowToken, 0)
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout)
     }
 }

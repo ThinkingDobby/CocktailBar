@@ -2,13 +2,16 @@ package com.thinkingdobby.cocktailbar
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.graphics.Matrix
 import android.graphics.drawable.RotateDrawable
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.core.graphics.rotationMatrix
 import androidx.exifinterface.media.ExifInterface
 import com.bumptech.glide.Glide
@@ -54,6 +57,8 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+
         /*
         // toolBar
         val toolBar: androidx.appcompat.widget.Toolbar? = add_tb
@@ -65,11 +70,25 @@ class DetailActivity : AppCompatActivity() {
         val bundle = intent.extras
         val drink = bundle!!.getParcelable<Drink>("selectedDrink")!!
 
+        val nowColor = when (drink.tasteType) {
+            "1" -> "#FFCCCC"
+            "2" -> "#DAE3F3"
+            "3" -> "#FBE5D6"
+            else -> "#AFABAB"
+        }
+
+        // statusBar
+        @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+        window.statusBarColor= Color.parseColor(nowColor)
+        // statusBar
+
         detail_tv_drinkName.text = drink.drinkName
         detail_tv_ingredient.text = drink.ingredient
         detail_tv_explain.text = drink.explain
 
-        var bitmap = BitmapFactory.decodeByteArray(drink.image, 0, drink.image!!.size)
+        val options = BitmapFactory.Options()
+        options.inSampleSize = 4
+        var bitmap = BitmapFactory.decodeByteArray(drink.image, 0, drink.image!!.size, options)
         //detail_iv_drink.setImageBitmap(bitmap)
 
         fun imgRotate(bmp: Bitmap): Bitmap {
@@ -106,5 +125,10 @@ class DetailActivity : AppCompatActivity() {
             }
             // Room Delete
         }
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout)
     }
 }

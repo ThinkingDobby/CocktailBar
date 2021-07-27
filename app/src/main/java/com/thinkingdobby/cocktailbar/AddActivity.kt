@@ -148,4 +148,9 @@ class AddActivity : AppCompatActivity() {
         DrinkDB.destroyInstance()
         super.onDestroy()
     }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout)
+    }
 }

@@ -50,7 +50,7 @@ class ListActivity : AppCompatActivity() {
             val bitmapList = mutableListOf<Bitmap>()
             for (i in it) {
                 val options = BitmapFactory.Options()
-                options.inSampleSize = 4
+                options.inSampleSize = 16
                 val bitmap = BitmapFactory.decodeByteArray(i.image, 0, i.image!!.size, options)
                 bitmapList.add(bitmap)
             }
@@ -58,5 +58,10 @@ class ListActivity : AppCompatActivity() {
             drinkAdapter = DrinkAdapter(drinkDB!!, it, bitmapList, this@ListActivity)
             list_rv.adapter = drinkAdapter
         })
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout)
     }
 }

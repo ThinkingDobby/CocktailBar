@@ -36,6 +36,7 @@ class TasteActivity : AppCompatActivity() {
             R.id.menu_btn_add -> {
                 val intent = Intent(this, AddActivity::class.java)
                 startActivity(intent)
+                overridePendingTransition(R.anim.fadein, R.anim.fadeout)
                 return true
             }
             else -> {
@@ -69,11 +70,17 @@ class TasteActivity : AppCompatActivity() {
         fun sendIntent(type: String) {
             intent.putExtra("tasteType", type)
             startActivity(intent)
+            overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         }
 
         taste_v_1.setOnClickListener { sendIntent(tasteTypes[0]) }
         taste_v_2.setOnClickListener { sendIntent(tasteTypes[1]) }
         taste_v_3.setOnClickListener { sendIntent(tasteTypes[2]) }
         taste_v_4.setOnClickListener { sendIntent(tasteTypes[3]) }
+    }
+
+    override fun finish() {
+        super.finish()
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout)
     }
 }
