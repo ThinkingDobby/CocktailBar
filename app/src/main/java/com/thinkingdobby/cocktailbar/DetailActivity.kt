@@ -79,6 +79,8 @@ class DetailActivity : AppCompatActivity() {
         window.statusBarColor= Color.parseColor(nowColor)
         // statusBar
 
+        detail_tv_drinkName.setBackgroundColor(Color.parseColor(nowColor))
+
         detail_tv_drinkName.text = drink.drinkName
         detail_tv_ingredient.text = drink.ingredient
         detail_tv_explain.text = drink.explain

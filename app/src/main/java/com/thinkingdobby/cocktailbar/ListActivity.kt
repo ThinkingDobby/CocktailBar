@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.thinkingdobby.cocktailbar.adapter.DrinkAdapter
 import com.thinkingdobby.cocktailbar.data.DrinkDB
 import kotlinx.android.synthetic.main.activity_list.*
+import kotlinx.android.synthetic.main.drink_card.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -39,8 +40,6 @@ class ListActivity : AppCompatActivity() {
         @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
         window.statusBarColor= Color.parseColor(nowColor)
         // statusBar
-
-        list_rv.setBackgroundColor(Color.parseColor(nowColor))
 
         var drinkAdapter: DrinkAdapter? = null
         list_rv.layoutManager = LinearLayoutManager(this@ListActivity)
