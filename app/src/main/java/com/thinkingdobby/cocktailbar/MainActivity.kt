@@ -47,6 +47,8 @@ class MainActivity : AppCompatActivity() {
                 if (success) {
                     main_et_pwInput.visibility = View.INVISIBLE
                     main_btn_pwSubmit.visibility = View.INVISIBLE
+                    main_btn_login.setBackgroundResource(R.drawable.lock_opened)
+                    main_btn_login.visibility = View.VISIBLE
                     hideKeyboard(main_cl)
                     Toast.makeText(this, "로그인 성공", Toast.LENGTH_SHORT).show()
                 } else {

@@ -4,7 +4,7 @@ import com.thinkingdobby.cocktailbar.data.MyApplication
 
 class Admin {
     companion object {
-        private var admin = false // 추후 변경
+        private var admin = false
     }
     private fun checkPassword(input: String): Boolean {
         return input.hashSHA256() == MyApplication.prefs.getString("password")

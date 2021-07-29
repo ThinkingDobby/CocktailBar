@@ -36,33 +36,39 @@
 
     <Button
         android:id="@+id/main_btn_enter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="메뉴판"
-        android:background="#DAE3F3"
+        android:layout_width="60dp"
+        android:layout_height="80dp"
         android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/main_btn_login"
-        app:layout_constraintEnd_toEndOf="@+id/main_btn_login"
-        app:layout_constraintStart_toStartOf="@+id/main_btn_login" />
+        android:background="@drawable/menu"
+        android:gravity="center_horizontal"
+        android:paddingTop="20dp"
+        android:text="메뉴"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/main_et_pwInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/main_btn_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="관리자 로그인"
-        android:background="#DAE3F3"
-        android:layout_marginBottom="50dp"
+        android:layout_width="20dp"
+        android:layout_height="30dp"
+        android:background="@drawable/lock_closed"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/main_et_pwInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="30dp"
         android:ems="10"
         android:hint="Input Password"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/white"
+        android:textCursorDrawable="@drawable/cursor_drawable"
+        android:textColorHint="#FAFAFA"
         android:textSize="22sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -72,10 +78,13 @@
 
     <Button
         android:id="@+id/main_btn_pwSubmit"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
         android:text="확인"
         android:visibility="invisible"
+        android:background="@drawable/button_background"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="6dp"
         app:layout_constraintBottom_toBottomOf="@+id/main_et_pwInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
