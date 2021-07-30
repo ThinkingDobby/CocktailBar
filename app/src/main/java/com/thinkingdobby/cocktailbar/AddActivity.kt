@@ -28,15 +28,15 @@ import java.io.ByteArrayOutputStream
 class AddActivity : AppCompatActivity() {
 
     private var tasteTypes = arrayOf(
-        "1",
-        "2",
-        "3",
-        "4"
+        "달콤하고 부드러운 맛",
+        "달콤하지만 높은 도수",
+        "깔끔하고 높은 도수",
+        "그 외의 음료"
     )  // 변경 필요
 
     private var imm: InputMethodManager? = null
 
-    private var selectedTasteType = tasteTypes[0]
+    private var selectedTasteType = "1"
 
     private val PICK_IMAGE = 0
     private var uriPhoto : Uri? = Uri.parse("android.resource://com.thinkingdobby.cocktailbar/drawable/default_image")
@@ -113,7 +113,12 @@ class AddActivity : AppCompatActivity() {
             }
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-                selectedTasteType = tasteTypes[position]
+                selectedTasteType = when (tasteTypes[position]) {
+                    "달콤하고 부드러운 맛" -> "1"
+                    "달콤하지만 높은 도수" -> "2"
+                    "깔끔하고 높은 도수" -> "3"
+                    else -> "4"
+                }
             }
         }
         // Spinner

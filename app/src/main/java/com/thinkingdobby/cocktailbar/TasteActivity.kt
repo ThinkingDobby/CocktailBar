@@ -64,6 +64,8 @@ class TasteActivity : AppCompatActivity() {
         val toolBar: androidx.appcompat.widget.Toolbar? = list_tb
         setSupportActionBar(toolBar)
         supportActionBar!!.setDisplayShowTitleEnabled(false)
+
+        list_tb.bringToFront()
         // toolBar
 
         val intent = Intent(this, ListActivity::class.java)
