@@ -16,6 +16,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import com.thinkingdobby.cocktailbar.data.Drink
@@ -52,20 +53,33 @@ class AddActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.menu_btn_save -> {
                 // Room Add
-                GlobalScope.launch {
-                    drinkDB = DrinkDB.getInstance(this@AddActivity)
 
-                    val newDrink = Drink()
-                    newDrink.drinkName = add_et_name.text.toString()
-                    newDrink.ingredient = add_et_ingredient.text.toString()
-                    newDrink.tasteType = selectedTasteType
-                    newDrink.explain = add_et_explain.text.toString()
-                    newDrink.image = getByteArrayFromDrawable(uriPhoto!!)
-                    drinkDB?.drinkDao()?.insert(newDrink)
+                if (uriPhoto == Uri.parse("android.resource://com.thinkingdobby.cocktailbar/drawable/default_image")) {
+                    Toast.makeText(this@AddActivity, "음료 사진을 선택하세요", Toast.LENGTH_SHORT).show()
+                } else {
+                    if (add_et_name.text.toString() == "") {
+                        Toast.makeText(this@AddActivity, "음료 이름을 입력하세요", Toast.LENGTH_SHORT).show()
+
+                    } else {
+                        GlobalScope.launch {
+                            drinkDB = DrinkDB.getInstance(this@AddActivity)
+
+
+                            val newDrink = Drink()
+                            newDrink.drinkName = add_et_name.text.toString()
+                            newDrink.ingredient = add_et_ingredient.text.toString()
+                            newDrink.tasteType = selectedTasteType
+                            newDrink.explain = add_et_explain.text.toString()
+                            newDrink.image = getByteArrayFromDrawable(uriPhoto!!)
+                            drinkDB?.drinkDao()?.insert(newDrink)
+
+                            finish()
+                        }
+                    }
                 }
                 // Room Add
 
-                finish()
+
                 return true
             }
             else -> {
@@ -101,6 +115,8 @@ class AddActivity : AppCompatActivity() {
         // toolBar
 
         imm = getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+
+        add_iv_drink.setImageURI(uriPhoto)
 
         // Spinner
         add_sp_tasteType.adapter = ArrayAdapter(this,

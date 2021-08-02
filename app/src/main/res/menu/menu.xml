@@ -6,7 +6,7 @@
     <!-- icon 변경 필요 -->
     <item
         android:id="@+id/menu_btn_save"
-        android:icon="@drawable/write"
+        android:icon="@drawable/button_plus_black"
         android:title="포스트 추가"
         app:showAsAction="always" />
 

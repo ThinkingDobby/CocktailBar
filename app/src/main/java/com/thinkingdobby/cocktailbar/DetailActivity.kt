@@ -8,7 +8,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.core.graphics.rotationMatrix
 import androidx.exifinterface.media.ExifInterface
 import com.bumptech.glide.Glide
@@ -28,41 +30,11 @@ class DetailActivity : AppCompatActivity() {
 
     private var drinkDB : DrinkDB? = null
 
-    /*
-    // toolBar
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val menuInflater = menuInflater
-        menuInflater.inflate(R.menu.menu_back, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu_btn_return -> {
-                finish()
-                return true
-            }
-            else -> {
-                return super.onOptionsItemSelected(item)
-            }
-        }
-    }
-    // toolBar
-     */
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
         overridePendingTransition(R.anim.fadein, R.anim.fadeout)
-
-        /*
-        // toolBar
-        val toolBar: androidx.appcompat.widget.Toolbar? = add_tb
-        setSupportActionBar(toolBar)
-        supportActionBar!!.setDisplayShowTitleEnabled(false)
-        // toolBar
-         */
 
         val bundle = intent.extras
         val drink = bundle!!.getParcelable<Drink>("selectedDrink")!!
@@ -120,12 +92,21 @@ class DetailActivity : AppCompatActivity() {
         }
 
         detail_rv_btn_remove.setOnClickListener {
-            // Room Delete
-            GlobalScope.launch {
-                drinkDB?.drinkDao()?.delete(drink)
-                finish()
+            val builder = AlertDialog.Builder(this@DetailActivity)
+            builder.setTitle("삭제하시겠습니까?")
+
+            builder.setPositiveButton("아니오") { _, which ->
             }
-            // Room Delete
+
+            builder.setNegativeButton("예") {_, which ->
+                // Room Delete
+                GlobalScope.launch {
+                    drinkDB?.drinkDao()?.delete(drink)
+                    finish()
+                }
+                // Room Delete
+            }
+            builder.create().show()
         }
     }
 

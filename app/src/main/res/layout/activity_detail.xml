@@ -21,7 +21,7 @@
         android:layout_height="25dp"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/minus"
+        android:background="@drawable/button_minus"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

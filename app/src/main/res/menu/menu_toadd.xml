@@ -6,7 +6,7 @@
     <item
         android:id="@+id/menu_btn_add"
         android:title="추가"
-        android:icon="@drawable/write"
+        android:icon="@drawable/button_plus"
         app:showAsAction="always" />
 
 </menu>
