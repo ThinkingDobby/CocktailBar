@@ -15,6 +15,10 @@ class Admin {
         admin = true
     }
 
+    fun unsetAdminValue() {
+        admin = false
+    }
+
     fun getAdminValue(): Boolean {
         return admin
     }

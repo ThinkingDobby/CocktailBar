@@ -23,20 +23,27 @@ class MainActivity : AppCompatActivity() {
         imm = getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as InputMethodManager?
 
         main_btn_enter.setOnClickListener {
+            main_et_pwInput.setText("")
+
             val intent = Intent(this, TasteActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         }
 
         main_btn_login.setOnClickListener {
-            val passwordExist = MyApplication.prefs.getString("password") != "Not Set"
-            main_btn_login.visibility = View.INVISIBLE
-            main_et_pwInput.visibility = View.VISIBLE
-            main_btn_pwSubmit.visibility = View.VISIBLE
-            if (passwordExist) {
-                main_et_pwInput.hint = "비밀번호를 입력하세요"
+            if (!Admin().getAdminValue()) {
+                val passwordExist = MyApplication.prefs.getString("password") != "Not Set"
+                main_btn_login.visibility = View.INVISIBLE
+                main_et_pwInput.visibility = View.VISIBLE
+                main_btn_pwSubmit.visibility = View.VISIBLE
+                if (passwordExist) {
+                    main_et_pwInput.hint = "비밀번호를 입력하세요"
+                } else {
+                    main_et_pwInput.hint = "새 비밀번호를 입력하세요"
+                }
             } else {
-                main_et_pwInput.hint = "새 비밀번호를 입력하세요"
+                Admin().unsetAdminValue()
+                main_btn_login.setBackgroundResource(R.drawable.lock_closed)
             }
         }
 
