@@ -88,10 +88,13 @@ class DetailActivity : AppCompatActivity() {
         drinkDB = DrinkDB.getInstance(this)
 
         if (Admin().getAdminValue()) {
-            detail_rv_btn_remove.visibility = View.VISIBLE
+            detail_btn_remove.visibility = View.VISIBLE
+            if (drink.recipe != "") {
+                detail_btn_recipe.visibility = View.VISIBLE
+            }
         }
 
-        detail_rv_btn_remove.setOnClickListener {
+        detail_btn_remove.setOnClickListener {
             val builder = AlertDialog.Builder(this@DetailActivity)
             builder.setTitle("삭제하시겠습니까?")
 
@@ -106,6 +109,16 @@ class DetailActivity : AppCompatActivity() {
                 }
                 // Room Delete
             }
+            builder.create().show()
+        }
+
+        detail_btn_recipe.setOnClickListener {
+            val builder = AlertDialog.Builder(this@DetailActivity)
+            builder.setTitle("${drink.drinkName} 조주법")
+            builder.setMessage("${drink.recipe}")
+            builder.setPositiveButton("확인") { _, which ->
+            }
+
             builder.create().show()
         }
     }

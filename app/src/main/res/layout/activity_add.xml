@@ -109,10 +109,22 @@
         android:id="@+id/add_et_explain"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="10dp"
         android:maxLines="1"
         android:inputType="textMultiLine"
         android:hint="설명을 입력하세요"
+        app:layout_constraintBottom_toTopOf="@id/add_et_recipe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/add_et_recipe"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:maxLines="1"
+        android:inputType="textMultiLine"
+        android:hint="조주법을 입력하세요"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

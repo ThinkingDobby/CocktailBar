@@ -70,6 +70,7 @@ class AddActivity : AppCompatActivity() {
                             newDrink.ingredient = add_et_ingredient.text.toString()
                             newDrink.tasteType = selectedTasteType
                             newDrink.explain = add_et_explain.text.toString()
+                            newDrink.recipe = add_et_recipe.text.toString()
                             newDrink.image = getByteArrayFromDrawable(uriPhoto!!)
                             drinkDB?.drinkDao()?.insert(newDrink)
 
