@@ -46,15 +46,16 @@ class ListActivity : AppCompatActivity() {
         list_rv.setHasFixedSize(true)
 
         drinkDB?.drinkDao()?.getByTasteType(tasteType)!!.observe(this, androidx.lifecycle.Observer {
+            val sortedDrinkList = it.sortedBy { drink -> drink.drinkName }
             val bitmapList = mutableListOf<Bitmap>()
-            for (i in it) {
+            for (i in sortedDrinkList) {
                 val options = BitmapFactory.Options()
                 options.inSampleSize = 16
                 val bitmap = BitmapFactory.decodeByteArray(i.image, 0, i.image!!.size, options)
                 bitmapList.add(bitmap)
             }
             // getAll() 에서 LiveData 로 데이터 기져옴 -> Observer 로 변화 감지 가능
-            drinkAdapter = DrinkAdapter(drinkDB!!, it, bitmapList, this@ListActivity)
+            drinkAdapter = DrinkAdapter(drinkDB!!, sortedDrinkList, bitmapList, this@ListActivity)
             list_rv.adapter = drinkAdapter
         })
     }
